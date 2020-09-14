@@ -17,3 +17,5 @@ Run `npm start`
 ### 4. Open it
 
 Go to `http://localhost:3000`
+
+![](/showcase.gif)
