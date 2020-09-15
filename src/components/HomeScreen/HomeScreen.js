@@ -42,7 +42,7 @@ const HomeScreen = () => {
     };
   }, []);
 
-  const renderProductsList = () => {
+  const renderProductsList = (productsListLoading, productsList) => {
     if (productsListLoading) return <StyledLoading>Loading...</StyledLoading>;
 
     return (
@@ -54,7 +54,11 @@ const HomeScreen = () => {
     );
   };
 
-  return <StyledHomeScreen>{renderProductsList()}</StyledHomeScreen>;
+  return (
+    <StyledHomeScreen>
+      {renderProductsList(productsListLoading, productsList)}
+    </StyledHomeScreen>
+  );
 };
 
 export default HomeScreen;

@@ -35,8 +35,9 @@ const GoToProductButton = styled(StyledLink)`
 const ProductInCart = ({ product }) => {
   const dispatch = useDispatch();
 
-  const renderManufacturers = () => {
-    return product.productDetails.manufacturers.map(manufacturer => (
+  // Functions
+  const renderManufacturers = manufacturers => {
+    return manufacturers.map(manufacturer => (
       <div key={manufacturer}>{manufacturer}</div>
     ));
   };
@@ -50,7 +51,10 @@ const ProductInCart = ({ product }) => {
       <StyledProductOfListName>
         {product.productDetails.name}
       </StyledProductOfListName>
-      {RenderInfoLine('Manufacturers:', renderManufacturers())}
+      {RenderInfoLine(
+        'Manufacturers:',
+        renderManufacturers(product.productDetails.manufacturers),
+      )}
       {RenderInfoLine('Cost in credits:', product.productDetails.costInCredits)}
       {RenderInfoLine('Quantity:', product.quantity)}
       {RenderInfoLine(

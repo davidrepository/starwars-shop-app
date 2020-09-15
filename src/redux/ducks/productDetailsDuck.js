@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_URL, PRODUCT_DETAILS_QUERY } from '../api';
 
 import {
   PRODUCT_DETAILS_REQUEST,
@@ -34,20 +35,8 @@ export const fetchProductDetails = productId => async dispatch => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-    const { data } = await axios.post('https://swapi.apis.guru/', {
-      query: `
-        {
-          starship(id: "${productId}") {
-            id
-            name
-            model
-            crew
-            passengers
-            manufacturers
-            costInCredits
-          }
-        }
-      `,
+    const { data } = await axios.post(API_URL, {
+      query: PRODUCT_DETAILS_QUERY(productId),
     });
 
     dispatch({
